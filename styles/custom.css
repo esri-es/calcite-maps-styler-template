@@ -16,6 +16,10 @@
       width: 400px;
   }
 
+  .esri-search__sources-button{
+      display: none;
+  }
+
   .esri-search--multiple-sources.esri-search__container button,
   .esri-search__clear-button.esri-widget--button,
   .esri-search__submit-button.esri-widget--button {
