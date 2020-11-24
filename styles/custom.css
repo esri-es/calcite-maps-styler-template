@@ -16,7 +16,9 @@
       width: 400px;
   }
 
-  .esri-search__sources-button{
+  .esri-search__sources-button,
+  .calcite-coords-container,
+  .calcite-coords-container{
       display: none;
   }
 
