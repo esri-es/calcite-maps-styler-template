@@ -1,0 +1,93 @@
+.calcite-map.calcite-map-absolute {
+      top: 85px !important;
+      border: 1px solid #ccc;
+  }
+
+  .navbar.calcite-navbar {
+      display: none;
+  }
+
+  .esri-search {
+      position: fixed;
+      top: 20px;
+      z-index: 9999;
+      left: 50%;
+      margin-left: -200px;
+      width: 400px;
+  }
+
+  .esri-search--multiple-sources.esri-search__container button,
+  .esri-search__clear-button.esri-widget--button,
+  .esri-search__submit-button.esri-widget--button {
+      padding: 20px!important;
+  }
+
+  .calcite-maps :not(.panel-body) .esri-search .esri-search__input {
+      font-size: 15px!important;
+  }
+
+  #panelLegend {
+      bottom: 15px;
+      position: fixed;
+      right: 15px;
+  }
+
+  #headingLegend {
+      display: none;
+  }
+
+  .calcite-panels.panel-group {
+      position: relative
+  }
+
+  @media only screen and (max-width: 600px) {
+      body {
+          background-color: lightblue;
+      }
+  }
+
+  .esri-component.esri-attribution.esri-widget {
+      display: none;
+  }
+
+  .esri-component.esri-search.esri-widget {
+      width: 68%;
+      left: 16%;
+      margin-left: 0px;
+  }
+
+  .esri-search__submit-button{
+      background: #D10001;
+  }
+
+  span.esri-icon-search {
+      color: white;
+  }
+
+  .esri-icon-search:before {
+      font-size: 1.75em;
+  }
+
+  button.esri-search__sources-button.esri-widget--button {
+      display: none;
+  }
+
+  button.esri-search__submit-button.esri-widget--button {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+  }
+
+  .esri-component.esri-search.esri-widget {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+  }
+
+  .esri-component.esri-search.esri-widget {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+  }
+
+  input.esri-input.esri-search__input {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+  }

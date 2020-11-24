@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="https://js.arcgis.com/4.10/esri/css/main.css">
   <!-- App -->
   <link rel="stylesheet" href="styles/main.css">
+  <!--Adding custom styles-->
+  <link rel="stylesheet" href="styles/custom.css">
 </head>
 
 <body class="calcite-maps calcite-nav-top boilerplate--loading">
@@ -238,9 +240,69 @@
   <!-- Load the app -->
   <script src="./app/dojo.js"></script>
   <script src="https://js.arcgis.com/4.10/"></script>
+  <!-- Library to check browser and geolocation API enabled -->
+  <script src="./app/modernizr-custom.js"></script>
   <script>
     require(["application/init"]);
 
+    // Custom code to hide the locate button
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf('safari') != -1) {
+    	if (ua.indexOf('chrome') <= -1) {
+    		hideLocateBtn("Browser is Safari");
+    	} else if (!Modernizr.geolocation) {
+    		// Geolocation API not-supported
+    		hideLocateBtn("Geolocation API not supported")
+    	}
+    }
+
+    function getLocation() {
+    	if (navigator.geolocation) {
+    		navigator.geolocation.getCurrentPosition(showPosition, showError);
+    	} else {
+    		hideLocateBtn("Geolocation is not supported by this browser.");
+    	}
+    }
+
+    function showPosition(position) {
+    	console.log("Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude);
+    }
+
+    function showError(error) {
+    	switch (error.code) {
+    		case error.PERMISSION_DENIED:
+    			hideLocateBtn("User denied the request for Geolocation.")
+    			break;
+    		case error.POSITION_UNAVAILABLE:
+    			hideLocateBtn("Location information is unavailable.")
+    			break;
+    		case error.TIMEOUT:
+    			hideLocateBtn("The request to get user location timed out.")
+    			break;
+    		case error.UNKNOWN_ERROR:
+    			hideLocateBtn("An unknown error occurred.")
+    			break;
+    	}
+    }
+
+    function hideLocateBtn(reasonToHide) {
+    	console.warn(reasonToHide);
+
+    	let css = '.esri-locate { display: none; }',
+    		head = document.head || document.getElementsByTagName('head')[0],
+    		style = document.createElement('style');
+
+    	head.appendChild(style);
+
+    	style.type = 'text/css';
+    	if (style.styleSheet) {
+    		// This is required for IE8 and below.
+    		style.styleSheet.cssText = css;
+    	} else {
+    		style.appendChild(document.createTextNode(css));
+    	}
+    }
+    getLocation();
   </script>
 </body>
 
